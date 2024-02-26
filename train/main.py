@@ -60,7 +60,7 @@ def main():
     optimizer = optim.Adam(model.parameters(), lr = learning_rate)
 
     train(model, train_loader, criterion, optimizer, num_epochs)
-    save_model(model, 'save/model.pth')
+    save_model(model, '../save/model.pth')
     test(model, test_loader)
 
 
