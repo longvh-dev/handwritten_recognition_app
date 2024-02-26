@@ -3,21 +3,19 @@ from torch import nn
 
 from train.models import num_classes
 
+"""
+This is a Convolutional Neural Network (CNN) class that inherits from PyTorch's nn.Module class.
 
-# Define basic CNN model
+The CNN class defines a basic CNN model with two convolutional layers, a max pooling layer, and two fully connected layers.
+
+Attributes:
+conv1 (nn.Conv2d): The first convolutional layer which takes a single-channel input and applies 32 filters.
+pool (nn.MaxPool2d): The max pooling layer which reduces the spatial dimensions of the input.
+conv2 (nn.Conv2d): The second convolutional layer which takes the 32-channel output from the previous layer as input.
+fc1 (nn.Linear): The first fully connected layer which takes the flattened output from the previous layer as input and outputs 128 features.
+fc2 (nn.Linear): The second fully connected layer which takes the 128 features as input and outputs a score for each class in num_classes.
+"""
 class CNN(nn.Module):
-    """
-    This is a Convolutional Neural Network (CNN) class that inherits from PyTorch's nn.Module class.
-
-    The CNN class defines a basic CNN model with two convolutional layers, a max pooling layer, and two fully connected layers.
-
-    Attributes:
-    conv1 (nn.Conv2d): The first convolutional layer which takes a single-channel input and applies 32 filters.
-    pool (nn.MaxPool2d): The max pooling layer which reduces the spatial dimensions of the input.
-    conv2 (nn.Conv2d): The second convolutional layer which takes the 32-channel output from the previous layer as input.
-    fc1 (nn.Linear): The first fully connected layer which takes the flattened output from the previous layer as input and outputs 128 features.
-    fc2 (nn.Linear): The second fully connected layer which takes the 128 features as input and outputs a score for each class in num_classes.
-    """
     def __init__(self):
         super(CNN, self).__init__()
         self.conv1 = nn.Conv2d(1, 32, kernel_size = 3, stride = 1, padding = 1)
