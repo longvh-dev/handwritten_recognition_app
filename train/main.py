@@ -53,6 +53,8 @@ def save_model(model, model_path):
     print(f'Model saved at {model_path}')
 
 def main():
+    learning_rate = 0.001
+    num_epochs = 5
     device = torch.device('cpu')  # Set device to CPU
 
     train_loader, test_loader = load_data()
