@@ -1,4 +1,5 @@
 # import os
+import argparse
 import warnings
 
 import numpy as np
@@ -14,6 +15,24 @@ warnings.filterwarnings('ignore')
 
 
 # os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
+
+def get_args():
+    parser = argparse.ArgumentParser()
+
+    # Training parameters
+    parser.add_argument('--learning_rate', type = float, default = 0.001)
+    parser.add_argument('--num_epochs', type = int, default = 5)
+
+    # Model parameters
+    parser.add_argument('--model_path', type = str,
+                        default = '../save/model.pth')
+
+    # Other parameters
+    parser.add_argument('--is_train', type = bool, default = True)
+    parser.add_argument('--is_test', type = bool, default = True)
+    parser.add_argument('--device', type = str, default = 'cuda')
+
+    return parser.parse_args()
 
 
 def train(model, train_loader, criterion, optimizer, epochs, device):
@@ -57,19 +76,22 @@ def save_model(model, model_path):
 
 
 def main():
-    learning_rate = 0.001
-    num_epochs = 5
-    device = torch.device('cuda')  # Set device to GPU
+    args = get_args()
+
+    device = torch.device(args.device)  # Set device
 
     train_loader, test_loader = load_data()
 
     model = CNN().to(device)
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr = learning_rate)
+    optimizer = optim.Adam(model.parameters(), lr = args.learning_rate)
 
-    train(model, train_loader, criterion, optimizer, num_epochs, device)
-    save_model(model, '../save/model.pth')
-    test(model, test_loader, device)
+    if args.is_train:
+        train(model, train_loader, criterion, optimizer, args.num_epochs, device)
+        save_model(model, '../save/model.pth')
+
+    if args.is_test:
+        test(model, test_loader, device)
 
 
 if __name__ == "__main__":
