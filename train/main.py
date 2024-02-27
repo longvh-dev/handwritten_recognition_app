@@ -7,7 +7,7 @@ import numpy as np
 
 from models.cnn import CNN
 from utils.load_data import load_data
-from . import learning_rate, num_epochs
+# from . import learning_rate, num_epochs
 
 warnings.filterwarnings('ignore')
 # os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
@@ -55,7 +55,7 @@ def save_model(model, model_path):
 def main():
     learning_rate = 0.001
     num_epochs = 5
-    device = torch.device('cpu')  # Set device to CPU
+    device = torch.device('cuda')  # Set device to GPU
 
     train_loader, test_loader = load_data()
 
