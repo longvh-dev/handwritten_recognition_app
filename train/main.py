@@ -1,16 +1,16 @@
-import os
+# import os
 import warnings
 
 import torch
 from torch import nn, optim
 import numpy as np
 
-from train.models.cnn import CNN
-from train.utils.load_data import load_data
+from models.cnn import CNN
+from utils.load_data import load_data
 from . import learning_rate, num_epochs
 
 warnings.filterwarnings('ignore')
-os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
+# os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 
 
 def train(model, train_loader, criterion, optimizer, epochs = 5):
