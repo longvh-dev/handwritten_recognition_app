@@ -64,7 +64,8 @@ def test(model, test_loader, device):
             _, predicted = torch.max(outputs.data, 1)
             total += labels.size(0)
 
-            correct += np.sum(predicted == labels).item()
+            is_correct = (predicted == labels)
+            correct += is_correct.sum().item()
 
     accuracy = 100 * correct / total
     print('Accuracy of the network on the 10000 test images: %d %%' % accuracy)
