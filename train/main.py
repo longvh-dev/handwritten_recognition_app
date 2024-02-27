@@ -13,11 +13,11 @@ warnings.filterwarnings('ignore')
 # os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 
 
-def train(model, train_loader, criterion, optimizer, epochs = 5):
+def train(model, train_loader, criterion, optimizer, epochs, device):
     for epoch in range(epochs):
         running_loss = 0.0
         for i, data in enumerate(train_loader, 0):
-            inputs, labels = data
+            inputs, labels = data[0].to(device), data[1].to(device)
             optimizer.zero_grad()
             outputs = model(inputs)
             loss = criterion(outputs, labels)
@@ -25,20 +25,19 @@ def train(model, train_loader, criterion, optimizer, epochs = 5):
             optimizer.step()
             running_loss += loss.item()
             if i % 100 == 99:  # Print every 100 mini-batches
-                print(f'Epoch [{epoch + 1} / {num_epochs}], Step [{i + 1}'
-                      f'/{len(train_loader)}], Loss: {loss.item():.4f}')
-
+                print('[%d, %5d] loss: %.3f' %
+                      (epoch + 1, i + 1, running_loss / 100))
                 running_loss = 0.0
 
     print('Finished Training')
 
 
-def test(model, test_loader):
+def test(model, test_loader, device):
     correct = 0
     total = 0
     with torch.no_grad():
         for data in test_loader:
-            images, labels = data
+            images, labels = data[0].to(device), data[1].to(device)
             outputs = model(images)
             _, predicted = torch.max(outputs.data, 1)
             total += labels.size(0)
@@ -46,22 +45,25 @@ def test(model, test_loader):
             correct += np.sum(predicted == labels).item()
 
     accuracy = 100 * correct / total
-    print(f'Accuracy on test set: {accuracy:.2f}%')
+    print('Accuracy of the network on the 10000 test images: %d %%' % accuracy)
+
 
 def save_model(model, model_path):
     torch.save(model.state_dict(), model_path)
     print(f'Model saved at {model_path}')
 
 def main():
+    device = torch.device('cpu')  # Set device to CPU
+
     train_loader, test_loader = load_data()
 
-    model = CNN()
+    model = CNN().to(device)
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr = learning_rate)
 
-    train(model, train_loader, criterion, optimizer, num_epochs)
+    train(model, train_loader, criterion, optimizer, num_epochs, device)
     save_model(model, '../save/model.pth')
-    test(model, test_loader)
+    test(model, test_loader, device)
 
 
 if __name__ == "__main__":
