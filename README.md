@@ -20,3 +20,47 @@ This project implements a web application using Flask and PyTorch to predict the
 ## Requirements:
 Python 3.8 or higher
 PyTorch 1.7.1 or higher
+
+## Installation:
+
+1. Clone the repository:
+
+```
+git clone https://github.com/longvh-dev/handwritten_recognition_app.git
+```
+
+2. Install dependencies (Using conda enviroment)
+
+```
+conda env create -f environment.yml -n <env_name>
+conda activate <env_name>
+```
+Remove the <env_name> and replace it with your desired environment name.
+
+
+3. Usage:
+
+Start the Flask application:
+
+```
+python app.py
+```
+
+Open your web browser and navigate to http://127.0.0.1:5000/ (or the specified port in app.py).
+
+Draw a digit on the canvas: Use your mouse or touch screen to create a digit within the designated area.
+
+Wait for the prediction: Once you stop drawing, the application will send the canvas data to the server. This triggers the prediction and displays the predicted digit and its probability distribution on the page.
+
+## Trained Model:
+
+The project use a CNN model with 2 layer for digit recognition. If you want to using different model, you can change 
+the model in the `train/models/*.py` file and update the `app.py` file to load the new model.
+
+## Contribution:
+
+Contributions are welcome! Feel free to fork the repository, make changes, and create pull requests to improve the project.
+
+## License:
+
+This project is licensed under the MIT License. For more information, please refer to the LICENSE file.
