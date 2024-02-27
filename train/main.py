@@ -1,15 +1,18 @@
 # import os
 import warnings
 
+import numpy as np
 import torch
 from torch import nn, optim
-import numpy as np
 
 from models.cnn import CNN
 from utils.load_data import load_data
+
 # from . import learning_rate, num_epochs
 
 warnings.filterwarnings('ignore')
+
+
 # os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 
 
@@ -51,6 +54,7 @@ def test(model, test_loader, device):
 def save_model(model, model_path):
     torch.save(model.state_dict(), model_path)
     print(f'Model saved at {model_path}')
+
 
 def main():
     learning_rate = 0.001
