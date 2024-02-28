@@ -9,7 +9,18 @@ from predictors import predict_digit
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 
 app = Flask(__name__)
-model_path = '../save/model.pth'
+model_path = 'save/model.pth'
+model = CNN()
+model.load_state_dict(torch.load(model_path, map_location=torch.device('cuda')))
+# model = torch.load(model_path, map_location=torch.device('cuda'))
+model.eval()
+
+
+def predict_digit(input):
+    with torch.no_grad():
+        output = model(torch.tensor(input, dtype=torch.float32))
+        probabilities = torch.nn.functional.softmax(output, dim=1)
+    return probabilities.tolist()
 
 
 @app.route('/', methods = ['GET'])
