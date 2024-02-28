@@ -40,10 +40,10 @@ Remove the <env_name> and replace it with your desired environment name.
 
 3. Usage:
 
-Start the Flask application:
+Start the Flask application from the root directory of the project by running the following command in the terminal
 
 ```
-python app.py
+python server/app.py
 ```
 
 Open your web browser and navigate to http://127.0.0.1:5000/ (or the specified port in app.py).
