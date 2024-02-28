@@ -82,6 +82,8 @@ window.onload = () => {
                 contentType: "application/json",
                 data: JSON.stringify(inputs),
                 success: (ret) => {
+                    // how to test the result type
+                    console.log("Response: ",ret);
                     for (let i = 0; i < 2; ++i) {
                         let max = 0;
                         let max_idx = 0;
@@ -93,6 +95,7 @@ window.onload = () => {
                                 max_idx = j;
                             }
                             /* Format the predicted value with three decimal */
+//                            value = parseFloat(value).toFixed(3));
                             value = value.toFixed(3);
                             $('.result tr').eq(j + 1).find('td').eq(i).text(value);
                         }

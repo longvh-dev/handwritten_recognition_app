@@ -5,8 +5,8 @@ body {
 }
 
 h1 {
-    text-shadow: 0px 0px 4px #2f6627;
-    color: #FF0066;
+    text-shadow: 0px 0px 4px #ffffff;
+    color: #0f29e1;
     display: inline-block;
 }
 
@@ -15,7 +15,7 @@ hr {
     margin: 0 auto;
     border: 0;
     height: 1px;
-    box-shadow: 0px 0px 5px 0px #FF0099;
+    box-shadow: 0px 0px 5px 0px #3FCEDF;
 
 }
 
@@ -23,21 +23,21 @@ hr {
     display: block;
     border-radius: 5px;
     background: #ffffff;
-    box-shadow: 0px 0px 18px 0px #FF0099;
+    box-shadow: 0px 0px 18px 0px #3FCEDF;
 }
 
 #picture {
     display: block;
     border-radius: 5px;
     background: #ffffff;
-    box-shadow: 0px 0px 18px 0px #FF0099;
+    box-shadow: 0px 0px 18px 0px #3FCEDF;
 }
 
 #reset {
-    -moz-box-shadow: 0px 0px 30px 0px #FF0099;
-    -webkit-box-shadow: 0px 0px 30px 0px #FF0099;
-    box-shadow: 0px 0px 18px 0px #FF0099;
-    background-color: #FF0066;
+    -moz-box-shadow: 0px 0px 30px 0px #3FCEDF;
+    -webkit-box-shadow: 0px 0px 30px 0px #3FCEDF;
+    box-shadow: 0px 0px 18px 0px #3FCEDF;
+    background-color: #ad00ff;
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
     border-radius: 6px;
@@ -97,7 +97,7 @@ table.result > tbody > tr > td {
 
 table th, td {
     border: none;
-    padding: 15px;
+    padding: 20px;
     text-align: center;
 }
 
@@ -106,6 +106,7 @@ table th, td {
 }
 
 .th-2 {
+    font-size: 18px;
     width: 250px;
 }
 
