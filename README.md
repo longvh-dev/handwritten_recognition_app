@@ -4,7 +4,7 @@
 
 This project implements a web application using Flask and PyTorch to predict the digit drawn by users on a canvas element. It provides users with a visually intuitive way to interact with a machine learning model for digit recognition.
 
-![Handwritten Digit Recognition App](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmd3M3NqYXJudW0yZjB5bmlsbDd3Zmh5MnY2MW1wd3k0MTd4bThvOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XQaiaUdl0s8k4fGxo4/giphy.gif)
+![Handwritten Digit Recognition App](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExejIwMXU3MG5mZWlkMDV2Y21yMnhqNmQzOGI2NndocXVsNmNtdjBkYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/X76oqRy5plpPwtaTb3/giphy.gif)
 
 ## Key Features:
 - User-friendly canvas for drawing: Users can easily draw digits on a designated canvas area within the web interface.
