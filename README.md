@@ -52,10 +52,20 @@ Draw a digit on the canvas: Use your mouse or touch screen to create a digit wit
 
 Wait for the prediction: Once you stop drawing, the application will send the canvas data to the server. This triggers the prediction and displays the predicted digit and its probability distribution on the page.
 
-## Trained Model:
+## Train Model:
 
 The project use a CNN model with 2 layer for digit recognition. If you want to using different model, you can change 
-the model in the `train/models/*.py` file and update the `app.py` file to load the new model.
+the model in the `train/models/cnn.py` file and update the `app.py` file to load the new model.
+
+First, you need to go to the `train` folder and run the `train.sh` file to train the model.
+
+
+```
+bash train.sh
+```
+
+If you want to change parameters (learning_rate, num_epochs, device) for training, you can change the `train.sh` file.
+
 
 ## Contribution:
 
