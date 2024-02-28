@@ -8,6 +8,7 @@ h1 {
     text-shadow: 0px 0px 4px #ffffff;
     color: #0f29e1;
     display: inline-block;
+    font-size: 50px;
 }
 
 hr {
@@ -97,16 +98,16 @@ table.result > tbody > tr > td {
 
 table th, td {
     border: none;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
+    font-size: 25px;
 }
 
 .th-1 {
-    width: 50px;
+    width: 75px;
 }
 
 .th-2 {
-    font-size: 18px;
     width: 250px;
 }
 
@@ -123,7 +124,6 @@ table {
 
 .answer {
     text-shadow: 0px 0px 18px #2f6627;
-    font-size: 18px;
     font-style: oblique;
     font-weight: bolder;
 }
