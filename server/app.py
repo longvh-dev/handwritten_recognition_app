@@ -1,10 +1,12 @@
 import os
-
+import sys
+import torch
 import numpy as np
 from flask import Flask, jsonify, render_template, request
 
-from predictors import predict_digit
-
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.dirname(SCRIPT_DIR))
+from train.models.cnn import CNN
 
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 
@@ -23,20 +25,20 @@ def predict_digit(input):
     return probabilities.tolist()
 
 
-@app.route('/', methods = ['GET'])
+@app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
 
 
-@app.route('/predict', methods = ['POST'])
+@app.route('/predict', methods=['POST'])
 def predict():
-    input = ((255 - np.array(request.json, dtype = np.uint8)) / 255.0).reshape(
+    input = ((255 - np.array(request.json, dtype=np.uint8)) / 255.0).reshape(
         1, 1, 28, 28)
 
-    result = predict_digit(input, model_path)
+    result = predict_digit(input)
 
-    return jsonify({ 'result': result })
+    return jsonify(data=result)
 
 
 if __name__ == '__main__':
-    app.run(host = '0.0.0.0', debug = True, port = 5000)
+    app.run(host='0.0.0.0', debug=True, port=5000)
